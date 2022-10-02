@@ -1,44 +1,12 @@
-""" Задайте список. Напишите программу, которая определит, присутствует ли в заданном списке строк некое число."""
+# Задайте список из n чисел последовательности по формуле (1+ 1 /n)**n и выведите на экран их сумму.Пример:- Для n = 6: [2, 2, 2, 2, 2, 3]   13
+num = int(input('Введите число: '))
+nums_list =[]
+for i in range(1, num+1):
+    temp = round( (1 + 1/i)**i )
+    nums_list.append(temp)
 
-from random import randint
-
-
-def input_nums(input_txt):
-    is_OK = False
-    while not is_OK:
-        try:
-            num = int(input(f"{input_txt}"))
-            is_OK = True
-        except ValueError:
-            print("Какое-то неправильное число!")
-    return num
-
-
-def fill_list(diap):
-    target_list = []
-    for i in range(diap):
-        target_list.append(randint(-diap, diap))
-    return target_list
-
-
-def check_list(num, diap, target_list):
-    if -diap < num < diap:
-        for i in target_list:
-            if i == num:
-                print("Yes")
-                break
-        else:
-            print("No")
-    else:
-        print("число вне пределов ")
-
-
-diapazon = input_nums("Введите диапазон (от -х до +х) и он же размер списка: ")
-
-target_list = fill_list(diapazon)
-
-print(target_list)
-
-check_num = input_nums("Введите проверяемое число: ")
-
-check_list(check_num, diapazon + 1, target_list)
+print(nums_list)
+sum = 0
+for j in nums_list:
+    sum +=j
+print(sum)   
